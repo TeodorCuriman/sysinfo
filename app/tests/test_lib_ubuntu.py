@@ -6,12 +6,13 @@ import lib.ubuntu as ubuntu
 def test_versiune_os():
     vos = ubuntu.gaseste_versiune_ubuntu()
 
-    if "Ubuntu" in vos:
-        logger.info(f"Sistemul de operare este Ubuntu: {vos}")
+    if any(distro in vos for distro in ["Ubuntu", "Linux Mint"]):
+        logger.info(f"Sistemul de operare este acceptat: {vos}")
         assert True
     else:
-        logger.error(f"Sistemul de operare NU este Ubuntu: {vos}")
+        logger.error(f"Sistemul de operare NU este acceptat: {vos}")
         assert False
+
 
 def test_informatii_memorie():
     mem_info = ubuntu.gaseste_informatii_memorie()
